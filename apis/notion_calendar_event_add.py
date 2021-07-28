@@ -2,8 +2,8 @@ import requests, json
 import os
 NOTION_API_KEY='secret_QGnRiFqCpdqfaTgnkDqbNvffMxpNcwLiJZrBzW9Al6D' 
 DATABASE_ID='d714a888485f406697c049e50977212b' 
-#NOTION_API_KEY = os.environ['NOTION_API_KEY']
-#DATABASE_ID = os.environ['DATABASE_ID']
+NOTION_API_KEY = os.environ['NOTION_API_KEY']
+DATABASE_ID = os.environ['DATABASE_ID']
 
 # post
 def notion_calendar_push(input_data):

@@ -13,8 +13,8 @@ from config import logger
 
 EMAIL='venueyeonnam@gmail.com'  
 PASSWORD='yxexkpjdmcqkfedb'
-#EMAIL = os.environ['EMAIL']
-#PASSWORD = os.environ['PASSWORD']
+EMAIL = os.environ['EMAIL']
+PASSWORD = os.environ['PASSWORD']
 SERVER = 'imap.gmail.com'
 
 def mailsvr():
@@ -32,11 +32,20 @@ def mailsvr():
     # 2. no-reply@hourplace.co.kr
     # 3. office@spacecloud.kr
     ##########################
-    fromName = 'jisunpark95@naver.com' or 'naverbooking_noreply@navercorp.com' or 'no-reply@hourplace.co.kr' or 'office@spacecloud.kr' or 'venueyeonnam@gmail.com'
-    fromMail = '{}{}{}'.format('(UNSEEN from ', fromName, ')')
+    #fromName = 'sean.kim.business@gmail.com' or 'jisunpark95@naver.com' or 'naverbooking_noreply@navercorp.com' or 'no-reply@hourplace.co.kr' or 'office@spacecloud.kr' or 'venueyeonnam@gmail.com'
+    #fromMail = '{}{}{}'.format('(UNSEEN from ', fromName, ')')
     
-    _, msgnums = mail.search(None, fromMail)
-    email_ids = msgnums[0].split()
+    #_, msgnums = mail.search(None, fromMail)
+    #email_ids = msgnums[0].split()
+
+    fromName = ['sean.kim.business@gmail.com', 'jisunpark95@naver.com', 'naverbooking_noreply@navercorp.com', 'no-reply@hourplace.co.kr', 'office@spacecloud.kr', 'venueyeonnam@gmail.com']
+    email_ids = []
+    for name in fromName:
+        fromMail = '{}{}{}'.format('(UNSEEN from ', name, ')')
+        _, msgnums = mail.search(None, fromMail)
+        email_ids += msgnums[0].split()
+
+    print(email_ids)
 
     if len(email_ids) == 0:
         mail.close()
@@ -347,15 +356,13 @@ def check_mail():
                 elif '오렌지' in mail[1]:
                     if mail[2].find('네이버') >= 0:
                         idx = mail[2].find('전화번호:')
-                        idx2 = mail[2].find('예약상품')
-                        print(mail[2][idx + 6:idx2-3])
-                        send_orange_msg.org_msg_send(mail[2][idx+6:idx2-3])
+                        print(mail[2][idx+6:idx+17])
+                        send_orange_msg.org_msg_send(mail[2][idx+6:idx+17])
                     
                     else:
                         idx = mail[2].find('연락처 :')
-                        idx2 = mail[2].find('[촬영')
-                        print(mail[2][idx + 6:idx2-3])
-                        send_orange_msg.org_msg_send(mail[2][idx+6:idx2-3])
+                        print(mail[2][idx+6:idx+19])
+                        send_orange_msg.org_msg_send(mail[2][idx+6:idx+19])
             sleep(10)
 
 # check_mail()

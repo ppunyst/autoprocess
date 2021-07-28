@@ -4,7 +4,7 @@ cachetools==4.2.2
 certifi==2021.5.30
 chardet==4.0.0
 click==7.1.2
-dataclasses==0.8
+# dataclasses==0.8
 Flask==1.1.4
 Flask-Cors==3.0.10
 flask-restx==0.4.0

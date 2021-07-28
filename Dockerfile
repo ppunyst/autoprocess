@@ -1,15 +1,16 @@
-FROM python:3.6.5-alpine
+FROM python:3.9.6
 
 COPY . /autoprocess
 WORKDIR /autoprocess
 
-RUN apk update && apk upgrade \
-    && apk add --virtual .build-deps g++ python3-dev libffi-dev \
-    && apk add --update python3 \
-    && pip3 install --upgrade pip setuptools
+# RUN apt-get update && apt-get upgrade \
+#     apt-get install -y python3 python3-pip python3-dev build-essential 
+#     # && apt-get add --virtual .build-deps g++ python3-dev libffi-dev \
+#     # && apt-get add --update python3 \
+#     # && pip3 install --upgrade pip setuptools
 
-RUN pip3 install -r requirements.txt \
-    && apk del .build-deps
+RUN pip3 install -r requirements.txt 
+    # && apt-get delete .build-deps
 
 ENV EMAIL='venueyeonnam@gmail.com'  \
     PASSWORD='yxexkpjdmcqkfedb' \

@@ -3,8 +3,8 @@ from email.mime.text import MIMEText
 import os
 EMAIL='venueyeonnam@gmail.com'  
 PASSWORD='yxexkpjdmcqkfedb'
-#EMAIL = os.environ['EMAIL']
-#PASSWORD = os.environ['PASSWORD']
+EMAIL = os.environ['EMAIL']
+PASSWORD = os.environ['PASSWORD']
 def send_double_notification_mail(data):
     try:
         smtp = smtplib.SMTP('smtp.gmail.com', 25) 
